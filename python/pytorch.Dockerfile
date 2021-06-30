@@ -1,6 +1,6 @@
 FROM ubuntu:18.04
 
-ARG PYTORCH_VERSION=1.3.1
+ARG PYTORCH_VERSION=1.7.1
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
          build-essential \
