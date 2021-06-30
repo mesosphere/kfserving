@@ -1,9 +1,9 @@
-FROM nvidia/cuda:10.0-cudnn7-devel-ubuntu18.04 AS BUILD
+FROM nvidia/cuda:11.0-cudnn8-devel-ubuntu18.04 AS BUILD
 
 ARG PYTHON_VERSION=3.7
 ARG CONDA_PYTHON_VERSION=3
 ARG CONDA_DIR=/opt/conda
-ARG PYTORCH_VERSION=1.3.1
+ARG PYTORCH_VERSION=1.7.1
 
 # Instal basic utilities
 RUN apt-get update && \
@@ -21,7 +21,7 @@ RUN wget --quiet https://repo.continuum.io/miniconda/Miniconda$CONDA_PYTHON_VERS
     rm -rf /var/lib/apt/lists/*
 
 RUN conda install -y python=$PYTHON_VERSION && \
-    conda install -y pytorch==$PYTORCH_VERSION torchvision pillow==6.2.0 cudatoolkit=10.0 -c pytorch && \
+    conda install -y pytorch==$PYTORCH_VERSION torchvision pillow==6.2.0 cudatoolkit=11.0 -c pytorch && \
     conda install -y h5py scikit-learn matplotlib seaborn \
     pandas mkl-service cython && \
     conda clean -tipsy
